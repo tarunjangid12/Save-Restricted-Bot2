@@ -111,7 +111,13 @@ def save(client: pyrogram.client.Client, message: pyrogram.types.messages_and_me
 					return
 				
 				try: handle_private(message,chatid,msgid)		
-				except Exception as e: bot.send_message(message.chat.id,f"**Error** : __{e}__", reply_to_message_id=message.id)
+				except Exception as e: 
+				    if "MESSAGE_EMPTY" not in str(e):
+                                       # If the error message indicates no downloadable media, log the error only
+                                        print (e)
+                                        bot.send_message(message.chat.id,f"**Error** : __{e}__", reply_to_message_id=message.id)        
+				    else:
+                                        print("No downloadable media found.")
 				# try: handle_private(message,chatid,msgid)
 				# except Exception as e: bot.send_message(message.chat.id,f"**Error** : __{e}__", reply_to_message_id=message.id)
 			
@@ -140,8 +146,13 @@ def save(client: pyrogram.client.Client, message: pyrogram.types.messages_and_me
 						bot.send_message(message.chat.id,f"**String Session is not Set**", reply_to_message_id=message.id)
 						return
 					try: handle_private(message,username,msgid)
-					except Exception as e: bot.send_message(message.chat.id,f"**Error** : __{e}__", reply_to_message_id=message.id)
-
+					except Exception as e: 
+				            if "MESSAGE_EMPTY" not in str(e):
+                                       # If the error message indicates no downloadable media, log the error only
+                                                print (e)
+                                                bot.send_message(message.chat.id,f"**Error** : __{e}__", reply_to_message_id=message.id)        
+				            else:
+                                                print("No downloadable media found.")
 			# wait time
 
 
