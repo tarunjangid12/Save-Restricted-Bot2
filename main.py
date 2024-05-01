@@ -166,16 +166,14 @@ def handle_private(message: pyrogram.types.messages_and_media.message.Message, c
 		
 		if "Document" == msg_type:
 			try:
-				thumb = acc.download_media(msg.document.thumbs[0].file_id)
-			except: thumb = None
+				thumb = None
 			
 			bot.send_document(message.chat.id, file, thumb=thumb, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.id, progress=progress, progress_args=[message,"up"])
 			if thumb != None: os.remove(thumb)
 
 		elif "Video" == msg_type:
 			try: 
-				thumb = acc.download_media(msg.video.thumbs[0].file_id)
-			except: thumb = None
+				thumb = None
 
 			bot.send_video(message.chat.id, file, duration=msg.video.duration, width=msg.video.width, height=msg.video.height, thumb=thumb, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.id, progress=progress, progress_args=[message,"up"])
 			if thumb != None: os.remove(thumb)
