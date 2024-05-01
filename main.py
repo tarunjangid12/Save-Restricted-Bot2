@@ -166,7 +166,7 @@ def handle_private(message: pyrogram.types.messages_and_media.message.Message, c
 		
 		if "Document" == msg_type:
 			bot.send_document(message.chat.id, file, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.id, progress=progress, progress_args=[message,"up"])
-		elif "Video" == msg_type
+		elif "Video" == msg_type:
 			bot.send_video(message.chat.id, file, duration=msg.video.duration, width=msg.video.width, height=msg.video.height, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.id, progress=progress, progress_args=[message,"up"])
 
 		elif "Animation" == msg_type:
