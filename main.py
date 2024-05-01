@@ -165,22 +165,9 @@ def handle_private(message: pyrogram.types.messages_and_media.message.Message, c
 		upsta.start()
 		
 		if "Document" == msg_type:
-			try:
-				thumb = None
-			except Exception as e:
-	                    print(e)
-			
-			bot.send_document(message.chat.id, file, thumb=thumb, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.id, progress=progress, progress_args=[message,"up"])
-			if thumb != None: os.remove(thumb)
-
-		elif "Video" == msg_type:
-			try: 
-				thumb = None
-			except Exception as e:
-		            print(e)
-
-			bot.send_video(message.chat.id, file, duration=msg.video.duration, width=msg.video.width, height=msg.video.height, thumb=thumb, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.id, progress=progress, progress_args=[message,"up"])
-			if thumb != None: os.remove(thumb)
+			bot.send_document(message.chat.id, file, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.id, progress=progress, progress_args=[message,"up"])
+		elif "Video" == msg_type
+			bot.send_video(message.chat.id, file, duration=msg.video.duration, width=msg.video.width, height=msg.video.height, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.id, progress=progress, progress_args=[message,"up"])
 
 		elif "Animation" == msg_type:
 			bot.send_animation(message.chat.id, file, reply_to_message_id=message.id)
